@@ -28,6 +28,12 @@
   flex-grow: 1;
 }
 
+.footer span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .title a {
   color: #0070f3;
   text-decoration: none;
@@ -43,6 +49,7 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  font-family: "Mea Culpa", cursive;
 }
 
 .title,
