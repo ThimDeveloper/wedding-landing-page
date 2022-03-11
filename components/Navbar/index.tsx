@@ -13,7 +13,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed w-full z-50 flex items-center flex-wrap p-3 bg-pale-pink">
+      <nav className="fixed w-full z-50 flex items-center flex-wrap p-3 bg-pale-pink shadow-md">
         <Link href="/">
           <a className="inline-flex items-center p-2 mr-4" onClick={close}>
             <span className="text-3xl text-white font-thin tracking-wide">
