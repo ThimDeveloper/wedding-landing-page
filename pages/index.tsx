@@ -6,7 +6,7 @@ import osterlen from "../public/images/osterlen_bw.jpeg";
 
 const Home: NextPage = () => {
   return (
-    <div className="w-full h-full md:w-10/12 m-auto">
+    <div className="w-full h-full md:w-7/12 m-auto">
       <div className="m-2 border-[8px] border-b-[64px] border-slate-200 shadow-lg rotate-2">
         <Image src={kiss} alt="Kyss" layout="responsive" priority />
       </div>

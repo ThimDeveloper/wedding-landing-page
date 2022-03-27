@@ -5,7 +5,15 @@ const OriginalNextImage = NextImage.default;
 
 Object.defineProperty(NextImage, "default", {
   configurable: true,
-  value: (props) => <OriginalNextImage {...props} unoptimized />,
+  value: (props) => (
+    <OriginalNextImage
+      height={"100%"}
+      width={"100%"}
+      {...props}
+      layout="responsive"
+      unoptimized
+    />
+  ),
 });
 
 export const parameters = {

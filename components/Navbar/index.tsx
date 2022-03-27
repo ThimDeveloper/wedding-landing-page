@@ -36,37 +36,37 @@ export const Navbar = () => {
             active ? "" : "hidden"
           }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
         >
-          <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto text-2xl">
+          <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto md:space-x-2 text-2xl">
             <Link href="/our-story">
               <a
                 onClick={close}
-                className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center hover:bg-rose-50 hover:text-stone-500 "
+                className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
               >
-                Our Story
+                Vår Berättelse
               </a>
             </Link>
             <Link href="/the-wedding">
               <a
                 onClick={close}
-                className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center hover:bg-rose-50 hover:text-stone-500"
+                className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
               >
-                The Wedding
+                Bröllopet
               </a>
             </Link>
-            <Link href="/wish-list">
+            <Link href="/gifts">
               <a
                 onClick={close}
-                className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center hover:bg-rose-50 hover:text-stone-500"
+                className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
               >
-                Wish List
+                Gåvor
               </a>
             </Link>
             <Link href="/toast">
               <a
                 onClick={close}
-                className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center hover:bg-rose-50 hover:text-stone-500"
+                className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
               >
-                Register a Toast
+                Anmäl ett tal
               </a>
             </Link>
           </div>
