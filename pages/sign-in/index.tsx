@@ -30,7 +30,7 @@ const SignIn: NextPage = () => {
             Vänligen, logga in för att ta del av innehållet
           </p>
         </section>
-        <section>
+        <section className="mt-10">
           <form className="flex flex-col">
             <div className="mb-6 pt-3 rounded bg-gray-200">
               <label
