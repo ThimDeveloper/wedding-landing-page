@@ -30,7 +30,6 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           />
           <link rel="manifest" href="/site.webmanifest" />
         </Head>
-
         <Component {...pageProps} />
       </Layout>
     </SessionProvider>

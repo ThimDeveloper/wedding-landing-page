@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 const OurStory: NextPage = () => {
   return (
-    <div className="flex justify-center items-center">
-      <p className="text-2xl">Vår Berättelse</p>
-    </div>
+    <main className="min-h-screen">
+      <p>Vår berättelse</p>
+    </main>
   );
 };
 

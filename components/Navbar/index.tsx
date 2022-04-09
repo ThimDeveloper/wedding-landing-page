@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { useSession, signIn, signOut } from "next-auth/react";
 
 export const Navbar = () => {
   const [active, setActive] = useState(false);
-  const { data } = useSession();
 
   const handleClick = () => {
     setActive(!active);
@@ -13,65 +11,46 @@ export const Navbar = () => {
     setActive(false);
   };
 
-  const NavItems = () =>
-    data ? (
-      <>
-        <Link href="/our-story">
-          <a
-            onClick={close}
-            className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
-          >
-            Vår Berättelse
-          </a>
-        </Link>
-        <Link href="/the-wedding">
-          <a
-            onClick={close}
-            className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
-          >
-            Bröllopet
-          </a>
-        </Link>
-        <Link href="/gifts">
-          <a
-            onClick={close}
-            className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
-          >
-            Gåvor
-          </a>
-        </Link>
-        <Link href="/toast">
-          <a
-            onClick={close}
-            className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
-          >
-            Anmäl ett tal
-          </a>
-        </Link>
-        <button
-          onClick={() => {
-            close();
-            signOut();
-          }}
+  const NavItems = () => (
+    <>
+      <Link href="/our-story">
+        <a
+          onClick={close}
           className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
         >
-          Logga ut
-        </button>
-      </>
-    ) : (
-      <button
-        onClick={() => {
-          close();
-          signIn();
-        }}
-        className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
-      >
-        Logga in
-      </button>
-    );
+          Vår Berättelse
+        </a>
+      </Link>
+      <Link href="/the-wedding">
+        <a
+          onClick={close}
+          className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
+        >
+          Bröllopet
+        </a>
+      </Link>
+      <Link href="/gifts">
+        <a
+          onClick={close}
+          className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
+        >
+          Gåvor
+        </a>
+      </Link>
+      <Link href="/toast">
+        <a
+          onClick={close}
+          className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
+        >
+          Anmäl ett tal
+        </a>
+      </Link>
+    </>
+  );
+
   return (
     <>
-      <nav className="fixed w-full z-50 flex items-center flex-wrap p-3 bg-pale-pink shadow-md">
+      <nav className="fixed w-full z-50 flex items-center flex-wrap p-3 bg-slate-50 shadow-md">
         <Link href="/">
           <a className="inline-flex items-center p-2 mr-4" onClick={close}>
             <span className="text-3xl text-white font-thin tracking-wide">
