@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { Burger } from "@mantine/core";
 
 export const Navbar = () => {
   const [active, setActive] = useState(false);
@@ -16,15 +17,15 @@ export const Navbar = () => {
       <Link href="/our-story">
         <a
           onClick={close}
-          className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
+          className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black font-thin items-center justify-center md:hover:scale-105 hover:bg-indigo-50 hover:text-stone-500 duration-200"
         >
-          Vår Berättelse
+          Vår berättelse
         </a>
       </Link>
       <Link href="/the-wedding">
         <a
           onClick={close}
-          className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
+          className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black font-thin items-center justify-center md:hover:scale-105 hover:bg-indigo-50 hover:text-stone-500 duration-200"
         >
           Bröllopet
         </a>
@@ -32,7 +33,7 @@ export const Navbar = () => {
       <Link href="/gifts">
         <a
           onClick={close}
-          className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
+          className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black font-thin items-center justify-center md:hover:scale-105 hover:bg-indigo-50 hover:text-stone-500 duration-200"
         >
           Gåvor
         </a>
@@ -40,7 +41,7 @@ export const Navbar = () => {
       <Link href="/toast">
         <a
           onClick={close}
-          className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
+          className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-black font-thin items-center justify-center md:hover:scale-105 hover:bg-indigo-50 hover:text-stone-500 duration-200"
         >
           Anmäl ett tal
         </a>
@@ -50,24 +51,17 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed w-full z-50 flex items-center flex-wrap p-3 bg-slate-50 shadow-md">
+      <nav className="fixed w-full z-50 flex flex-wrap items-center p-3 bg-white shadow-lg">
         <Link href="/">
           <a className="inline-flex items-center p-2 mr-4" onClick={close}>
-            <span className="text-3xl text-white font-thin tracking-wide">
+            <span className="text-3xl font-thin text-black tracking-wide">
               Simon x Marie
             </span>
           </a>
         </Link>
-        <button
-          className=" inline-flex p-3 rounded lg:hidden text-white ml-auto hover:text-stone-500 outline-none"
-          onClick={handleClick}
-        >
-          <div className="space-y-2">
-            <span className="block w-8 h-0.5 bg-white" />
-            <span className="block w-8 h-0.5 bg-white" />
-            <span className="block w-5 h-0.5 bg-white" />
-          </div>
-        </button>
+        <div className="inline ml-auto px-8 lg:hidden">
+          <Burger opened={active} onClick={handleClick} />
+        </div>
         <div
           className={`${
             active ? "" : "hidden"
@@ -81,3 +75,16 @@ export const Navbar = () => {
     </>
   );
 };
+
+{
+  /* <button
+  className=" inline-flex p-3 rounded lg:hidden text-white ml-auto hover:text-stone-500 outline-none"
+  onClick={handleClick}
+>
+  <div className="space-y-2">
+    <span className="block w-8 h-0.5 bg-white" />
+    <span className="block w-8 h-0.5 bg-white" />
+    <span className="block w-5 h-0.5 bg-white" />
+  </div>
+</button>; */
+}

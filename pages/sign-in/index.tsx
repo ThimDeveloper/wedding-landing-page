@@ -17,7 +17,7 @@ const SignIn: NextPage = () => {
     console.log("submitted");
   };
   return (
-    <div className="min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0 bg-gradient-to-t from-maximum-blue-purple to-pale-pink">
+    <div className="min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
       <header className="max-w-lg mx-auto">
         <h1 className="text-4xl font-bold text-white text-center">
           Simon och Maries Bröllop
@@ -40,7 +40,7 @@ const SignIn: NextPage = () => {
                 Email
               </label>
               <input
-                className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 px-3 pb-3 focus:border-maximum-blue-purple transition duration-500"
+                className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 px-3 pb-3 focus:border-indigo-400 transition duration-500"
                 type="email"
                 id="email"
                 placeholder="gladgäst@bröllop.se"
@@ -56,7 +56,7 @@ const SignIn: NextPage = () => {
                 Hemlig kod
               </label>
               <input
-                className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 px-3 pb-3 focus:border-maximum-blue-purple transition duration-500"
+                className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 px-3 pb-3 focus:border-indigo-400 transition duration-500"
                 type="password"
                 id="password"
                 placeholder="xxxx-xxxx-xxxx"
@@ -66,13 +66,13 @@ const SignIn: NextPage = () => {
             </div>
             <div className="flex justify-end">
               <Link href="/forget-password">
-                <a className="text-sm text-maximum-blue-purple hover:text-blush hover:underline mb-6">
+                <a className="text-sm text-purple-500 hover:text-purple-700 hover:underline mb-6">
                   Har du glömt din hemliga kod?
                 </a>
               </Link>
             </div>
             <button
-              className="bg-maximum-blue-purple hover:bg-maximum-blue-purple text-white font-bold py-2 rounded shadow-lg hover:scale-105 hover:shadow-xl transition delay-75 duration-200 ease-in-out"
+              className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 rounded shadow-lg hover:scale-105 hover:shadow-xl transition delay-75 duration-200 ease-in-out"
               onClick={onSubmitHandler}
             >
               Logga in
