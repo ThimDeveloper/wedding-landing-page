@@ -1,10 +1,7 @@
 import type { NextPage } from "next";
+import { RegisterSpeechForm } from "@/components/RegisterSpeechForm";
 const Toast: NextPage = () => {
-  return (
-    <div className="flex justify-center items-center">
-      <p className="text-2xl">Anmäl ett tal</p>
-    </div>
-  );
+  return <RegisterSpeechForm />;
 };
 
 export default Toast;

@@ -14,7 +14,7 @@ const Home: NextPage = () => {
             <Blockquote cite="– Nils Ferlin">
               Kärleken är så förunderligt stark, kuvas av intet i världen.
             </Blockquote>
-            <div className="m-2 border-[8px] border-b-[64px] border-white shadow-lg -rotate-3">
+            <div className="m-2 border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl -rotate-3">
               <Image
                 src={midsummer}
                 alt="Midsommar"
@@ -24,10 +24,10 @@ const Home: NextPage = () => {
             </div>
           </Grid.Col>
           <Grid.Col sm={12} md={6}>
-            <div className="m-2 border-[8px] border-b-[64px] border-white shadow-lg rotate-2">
+            <div className="m-2 border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl rotate-2">
               <Image src={kiss} alt="Kyss" layout="responsive" priority />
             </div>
-            <div className="m-2 border-[8px] border-b-[64px] border-white shadow-lg rotate-6">
+            <div className="m-2 border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl rotate-6">
               <Image src={osterlen} alt="Midsommar" layout="responsive" />
             </div>
           </Grid.Col>
