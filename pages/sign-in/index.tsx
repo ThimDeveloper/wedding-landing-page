@@ -1,28 +1,37 @@
-import { NextPage } from "next";
+import { GetServerSidePropsContext, NextPage } from "next";
+import { getSession, signIn } from "next-auth/react";
 import Link from "next/link";
-import { ChangeEvent, SyntheticEvent, useState } from "react";
+import { useRouter } from "next/router";
+import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
+import { EyeIcon } from "./eyeIcon";
 
-const SignIn: NextPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const SignIn: NextPage = (props) => {
+  const router = useRouter();
+  const [authcode, setAuthcode] = useState("");
+  const [visible, setVisible] = useState(false);
+  const [error, setError] = useState(false);
 
-  const onEmailChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
-    setEmail(evt.target.value);
+  const onPassCodeChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
+    setAuthcode(evt.target.value);
   };
-  const onPasswordChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
-    setPassword(evt.target.value);
-  };
-  const onSubmitHandler = (evt: SyntheticEvent) => {
+  const onSubmitHandler = async (evt: SyntheticEvent) => {
     evt.preventDefault();
-    console.log("submitted");
+    const response = await signIn("credentials", {
+      authcode: authcode,
+      redirect: false,
+      callbackUrl: "/",
+    });
+    if ((response as any)?.error) {
+      setError(true);
+    } else {
+      setError(false);
+      await router.replace(router.asPath, "/");
+    }
   };
+
   return (
     <div className="min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
-      <header className="max-w-lg mx-auto">
-        <h1 className="text-4xl font-bold text-white text-center">
-          Simon och Maries Bröllop
-        </h1>
-      </header>
+      <header className="max-w-lg mx-auto"></header>
       <main className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-xl shadow-2xl">
         <section>
           <h3 className="font-bold text-2xl">Välkommen</h3>
@@ -35,44 +44,42 @@ const SignIn: NextPage = () => {
             <div className="mb-6 pt-3 rounded bg-gray-200">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2 ml-3"
-                htmlFor="email"
-              >
-                Email
-              </label>
-              <input
-                className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 px-3 pb-3 focus:border-indigo-400 transition duration-500"
-                type="email"
-                id="email"
-                placeholder="gladgäst@bröllop.se"
-                defaultValue={email}
-                onChange={onEmailChangeHandler}
-              />
-            </div>
-            <div className="mb-6 pt-3 rounded bg-gray-200">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2 ml-3"
                 htmlFor="password"
               >
                 Hemlig kod
               </label>
-              <input
-                className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 px-3 pb-3 focus:border-indigo-400 transition duration-500"
-                type="password"
-                id="password"
-                placeholder="xxxx-xxxx-xxxx"
-                defaultValue={password}
-                onChange={onPasswordChangeHandler}
-              />
+              <div className="flex flex-row w-full">
+                <input
+                  className="w-11/12 bg-gray-200 text-gray-700 focus:outline-none border-b-4 border-gray-300 px-3 pb-3 focus:border-pink-300 transition duration-500"
+                  type={visible ? "text" : "password"}
+                  id="authcode"
+                  defaultValue={authcode}
+                  onChange={onPassCodeChangeHandler}
+                />
+                <div
+                  className="w-1/12"
+                  onClick={() => setVisible((prev) => !prev)}
+                >
+                  <EyeIcon visible={visible}></EyeIcon>
+                </div>
+              </div>
             </div>
-            <div className="flex justify-end">
-              <Link href="/forget-password">
-                <a className="text-sm text-purple-500 hover:text-purple-700 hover:underline mb-6">
+            {
+              <div className="flex justify-end">
+                <p className="text-sm text-red-400 mb-6">
+                  {error ? "Ogiltig kod. Försök igen!" : ""}
+                </p>
+              </div>
+            }
+            {/* <div className="flex justify-end">
+              <Link href="/forgot-password">
+                <a className="text-sm text-sky-600 hover:text-sky-700 hover:underline mb-6">
                   Har du glömt din hemliga kod?
                 </a>
               </Link>
-            </div>
+            </div> */}
             <button
-              className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 rounded shadow-lg hover:scale-105 hover:shadow-xl transition delay-75 duration-200 ease-in-out"
+              className="bg-pink-300 hover:bg-pink-400 text-white font-bold py-2 rounded shadow-lg hover:scale-105 hover:shadow-xl transition delay-75 duration-200 ease-in-out"
               onClick={onSubmitHandler}
             >
               Logga in
@@ -84,4 +91,20 @@ const SignIn: NextPage = () => {
   );
 };
 
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { req, res } = context;
+  const session = await getSession({ req });
+  if (session && res) {
+    return {
+      props: { session },
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: { session: null },
+  };
+}
 export default SignIn;

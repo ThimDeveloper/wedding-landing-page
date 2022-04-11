@@ -12,6 +12,9 @@
       "@/pages/*": [
         "pages/*"
       ],
+      "@/db/*": [
+        "db/*"
+      ],
       "@/storybook-helpers/*": [
         "storybook-helpers/*"
       ]

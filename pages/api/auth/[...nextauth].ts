@@ -1,5 +1,7 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth";
+import { getDbInstance } from "@/db/index";
+import { randomUUID } from "crypto";
 
 export default NextAuth({
   providers: [
@@ -11,16 +13,30 @@ export default NextAuth({
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        username: {
-          label: "Email",
-          type: "email",
-          placeholder: "gladgäst@bröllop.com",
+        authcode: {
+          label: "Hemlig kod",
+          type: "password",
         },
-        password: { label: "Lösenord", type: "password", placeholder: "<kod>" },
       },
       async authorize(credentials, req) {
-        // Add logic here to look up the user from the credentials supplied
-        const user = { id: 1, name: "J Smith", email: "jsmith@example.com" };
+        console.log(credentials);
+
+        const authcode = credentials?.authcode;
+        let user = null;
+
+        if (authcode) {
+          const client = await getDbInstance().connect();
+          const collection = await client
+            .db("wedding")
+            .collection("codes")
+            .findOne({ code: authcode });
+          if (collection) {
+            user = {
+              id: randomUUID(),
+              name: "authenticated-wedding-guest",
+            };
+          }
+        }
 
         if (user) {
           // Any object returned will be saved in `user` property of the JWT
@@ -34,4 +50,7 @@ export default NextAuth({
       },
     }),
   ],
+  pages: {
+    signIn: "/sign-in",
+  },
 });
