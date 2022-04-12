@@ -2,7 +2,7 @@ import { GetServerSidePropsContext, NextPage } from "next";
 import { getSession, signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
+import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { EyeIcon } from "@/components/EyeIcon";
 
 const SignIn: NextPage = (props) => {
@@ -19,13 +19,13 @@ const SignIn: NextPage = (props) => {
     const response = await signIn("credentials", {
       authcode: authcode,
       redirect: false,
-      callbackUrl: "/",
+      callbackUrl: "/our-story",
     });
     if ((response as any)?.error) {
       setError(true);
     } else {
       setError(false);
-      await router.replace(router.asPath, "/");
+      await router.replace(router.asPath, "/our-story");
     }
   };
 
@@ -98,7 +98,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return {
       props: { session },
       redirect: {
-        destination: "/",
+        destination: "/our-story",
         permanent: false,
       },
     };
