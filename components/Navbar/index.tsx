@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { NavbarItem } from "./NavbarItem";
+import { NavItemsContainer } from "./NavItemsContainer";
+import { Burger, Drawer } from "@mantine/core";
+import { useRouter } from "next/router";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export const Navbar = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
   const [active, setActive] = useState(false);
+  const [activeTab, setActiveTab] = useState("");
 
   const handleClick = () => {
     setActive(!active);
@@ -11,66 +19,93 @@ export const Navbar = () => {
     setActive(false);
   };
 
+  useEffect(() => {
+    setActiveTab(router.pathname);
+  }, [router]);
+
+  const NavItems = () => (
+    <>
+      {!session ? (
+        <NavbarItem
+          href="/sign-in"
+          text="Logga in"
+          onClick={() => {
+            close();
+            signIn();
+          }}
+          activeTab={activeTab}
+        />
+      ) : (
+        <>
+          <NavbarItem
+            href="/our-story"
+            text="Vår berättelse"
+            onClick={close}
+            activeTab={activeTab}
+          />
+          {/* <NavbarItem
+        href="/the-wedding"
+        text="Information om bröllopet"
+        onClick={close}
+        activeTab={activeTab}
+      />
+      <NavbarItem
+        href="/gifts"
+        text="Gåvor"
+        onClick={close}
+        activeTab={activeTab}
+      /> */}
+          <NavbarItem
+            href="/toast"
+            text="Anmäl ett tal"
+            onClick={close}
+            activeTab={activeTab}
+          />
+          <NavbarItem
+            href="/sign-out"
+            text="Logga ut"
+            onClick={() => {
+              close();
+              signOut({ callbackUrl: "/" });
+            }}
+            activeTab={activeTab}
+          />
+        </>
+      )}
+    </>
+  );
+
   return (
     <>
-      <nav className="fixed w-full z-50 flex items-center flex-wrap p-3 bg-pale-pink shadow-md">
+      <nav className="fixed w-full lg:px-12 z-50 flex flex-wrap items-center p-3 bg-white shadow-lg">
         <Link href="/">
           <a className="inline-flex items-center p-2 mr-4" onClick={close}>
-            <span className="text-3xl text-white font-thin tracking-wide">
+            <span className="text-3xl font-thin text-black tracking-wide">
               Simon x Marie
             </span>
           </a>
         </Link>
-        <button
-          className=" inline-flex p-3 rounded lg:hidden text-white ml-auto hover:text-stone-500 outline-none"
-          onClick={handleClick}
-        >
-          <div className="space-y-2">
-            <span className="block w-8 h-0.5 bg-white" />
-            <span className="block w-8 h-0.5 bg-white" />
-            <span className="block w-5 h-0.5 bg-white" />
-          </div>
-        </button>
-        <div
-          className={`${
-            active ? "" : "hidden"
-          }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
-        >
-          <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto md:space-x-2 text-2xl">
-            <Link href="/our-story">
-              <a
-                onClick={close}
-                className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
-              >
-                Vår Berättelse
-              </a>
-            </Link>
-            <Link href="/the-wedding">
-              <a
-                onClick={close}
-                className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
-              >
-                Bröllopet
-              </a>
-            </Link>
-            <Link href="/gifts">
-              <a
-                onClick={close}
-                className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
-              >
-                Gåvor
-              </a>
-            </Link>
-            <Link href="/toast">
-              <a
-                onClick={close}
-                className="transition ease-in lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-thin items-center justify-center md:hover:scale-105 hover:bg-rose-50 hover:text-stone-500 duration-200"
-              >
-                Anmäl ett tal
-              </a>
-            </Link>
-          </div>
+
+        <div className="inline ml-auto px-8 lg:hidden">
+          <Burger opened={active} onClick={handleClick} />
         </div>
+
+        <NavItemsContainer extraStyles={["hidden"]}>
+          <NavItems />
+        </NavItemsContainer>
+
+        <Drawer
+          opened={active}
+          onClose={() => close()}
+          padding="md"
+          size="xl"
+          position="right"
+          className="pr-12 pt-6"
+        >
+          <NavItemsContainer>
+            <NavItems />
+          </NavItemsContainer>
+        </Drawer>
       </nav>
     </>
   );
