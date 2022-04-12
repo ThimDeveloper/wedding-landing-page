@@ -22,8 +22,8 @@ const Home: NextPage = () => {
         </section>
         <section className="font-thin text-xl">
           <p>
-            Slutligen – Vi är så glada över att dela denna dag med dig och ser
-            fram emot att dansa hela natten med alla våra favoritmänniskor!
+            Vi är så glada över att dela denna dag med dig och ser fram emot att
+            dansa hela natten med alla våra favoritmänniskor!
           </p>
         </section>
       </main>
