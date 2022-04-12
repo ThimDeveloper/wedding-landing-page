@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { EyeIcon } from "@/components/EyeIcon";
 
-const SignIn: NextPage = (props) => {
+const SignIn: NextPage = () => {
   const router = useRouter();
   const [authcode, setAuthcode] = useState("");
   const [visible, setVisible] = useState(false);

@@ -66,7 +66,7 @@ export const Navbar = () => {
             text="Logga ut"
             onClick={() => {
               close();
-              signOut({ callbackUrl: "/sign-in" });
+              signOut({ callbackUrl: "/" });
             }}
             activeTab={activeTab}
           />
