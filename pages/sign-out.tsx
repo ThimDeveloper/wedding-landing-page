@@ -15,7 +15,7 @@ const SignOut: NextPage = () => {
     return () => {
       clearTimeout(time.current as unknown as number);
     };
-  }, []);
+  }, [router]);
 
   return (
     <div className="min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
