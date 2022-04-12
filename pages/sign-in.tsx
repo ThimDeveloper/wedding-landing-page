@@ -3,7 +3,7 @@ import { getSession, signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
-import { EyeIcon } from "./eyeIcon";
+import { EyeIcon } from "@/components/EyeIcon";
 
 const SignIn: NextPage = (props) => {
   const router = useRouter();

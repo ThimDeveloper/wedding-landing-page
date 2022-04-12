@@ -1,39 +1,33 @@
 import type { NextPage } from "next";
-import Image from "next/image";
-import kiss from "../public/images/kiss.jpeg";
-import midsummer from "../public/images/midsummer_bw.jpeg";
-import osterlen from "../public/images/osterlen_bw.jpeg";
-import { Blockquote, Grid } from "@mantine/core";
 
 const Home: NextPage = () => {
   return (
-    <>
-      <div className="p-2 min-h-screen w-11/12 mx-auto md:p-0 md:w-7/12 ">
-        <Grid>
-          <Grid.Col sm={12} md={6}>
-            <Blockquote cite="– Nils Ferlin">
-              Kärleken är så förunderligt stark, kuvas av intet i världen.
-            </Blockquote>
-            <div className="m-2 border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl -rotate-3">
-              <Image
-                src={midsummer}
-                alt="Midsommar"
-                layout="responsive"
-                priority
-              />
-            </div>
-          </Grid.Col>
-          <Grid.Col sm={12} md={6}>
-            <div className="m-2 border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl rotate-2">
-              <Image src={kiss} alt="Kyss" layout="responsive" priority />
-            </div>
-            <div className="m-2 border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl rotate-6">
-              <Image src={osterlen} alt="Midsommar" layout="responsive" />
-            </div>
-          </Grid.Col>
-        </Grid>
-      </div>
-    </>
+    <div className="min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
+      <main className="bg-white max-w-4xl mx-auto p-8 md:p-12 my-10 rounded-xl shadow-2xl">
+        <section className="pb-8">
+          <h1 className="text-4xl mb-4">Simon och Marie ska gifta sig!</h1>
+          <p className="font-thin text-xl">
+            Välkommen till vår bröllopswebbplats, vi kan inte vänta med att fira
+            vår speciella dag med dig.
+          </p>
+          😍😍😍
+        </section>
+        <section className="font-thin text-xl mb-8">
+          <p>
+            Vi har skapat den här webbplatsen som ett bekvämt och interaktivt
+            sätt att dela alla viktiga detaljer med dig inför vårt bröllop. Du
+            kan läsa mer om vår kärlekshistoria, och anmäla intresse om att
+            hålla ett tal på bröllopet.
+          </p>
+        </section>
+        <section className="font-thin text-xl">
+          <p>
+            Slutligen – Vi är så glada över att dela denna dag med dig och ser
+            fram emot att dansa hela natten med alla våra favoritmänniskor!
+          </p>
+        </section>
+      </main>
+    </div>
   );
 };
 

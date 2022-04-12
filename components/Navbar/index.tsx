@@ -25,30 +25,6 @@ export const Navbar = () => {
 
   const NavItems = () => (
     <>
-      <NavbarItem
-        href="/our-story"
-        text="Vår berättelse"
-        onClick={close}
-        activeTab={activeTab}
-      />
-      {/* <NavbarItem
-        href="/the-wedding"
-        text="Information om bröllopet"
-        onClick={close}
-        activeTab={activeTab}
-      />
-      <NavbarItem
-        href="/gifts"
-        text="Gåvor"
-        onClick={close}
-        activeTab={activeTab}
-      /> */}
-      <NavbarItem
-        href="/toast"
-        text="Anmäl ett tal"
-        onClick={close}
-        activeTab={activeTab}
-      />
       {!session ? (
         <NavbarItem
           href="/sign-in"
@@ -60,15 +36,41 @@ export const Navbar = () => {
           activeTab={activeTab}
         />
       ) : (
-        <NavbarItem
-          href="/sign-out"
-          text="Logga ut"
-          onClick={() => {
-            close();
-            signOut({ callbackUrl: "/sign-in" });
-          }}
-          activeTab={activeTab}
-        />
+        <>
+          <NavbarItem
+            href="/our-story"
+            text="Vår berättelse"
+            onClick={close}
+            activeTab={activeTab}
+          />
+          {/* <NavbarItem
+        href="/the-wedding"
+        text="Information om bröllopet"
+        onClick={close}
+        activeTab={activeTab}
+      />
+      <NavbarItem
+        href="/gifts"
+        text="Gåvor"
+        onClick={close}
+        activeTab={activeTab}
+      /> */}
+          <NavbarItem
+            href="/toast"
+            text="Anmäl ett tal"
+            onClick={close}
+            activeTab={activeTab}
+          />
+          <NavbarItem
+            href="/sign-out"
+            text="Logga ut"
+            onClick={() => {
+              close();
+              signOut({ callbackUrl: "/sign-in" });
+            }}
+            activeTab={activeTab}
+          />
+        </>
       )}
     </>
   );

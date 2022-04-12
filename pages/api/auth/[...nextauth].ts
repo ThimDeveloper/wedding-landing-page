@@ -1,6 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth";
-import { getDbInstance } from "@/db/index";
+import { checkAuthCode } from "@/db/index";
 import { randomUUID } from "crypto";
 
 export default NextAuth({
@@ -19,18 +19,12 @@ export default NextAuth({
         },
       },
       async authorize(credentials, req) {
-        console.log(credentials);
-
         const authcode = credentials?.authcode;
         let user = null;
 
         if (authcode) {
-          const client = await getDbInstance().connect();
-          const collection = await client
-            .db("wedding")
-            .collection("codes")
-            .findOne({ code: authcode });
-          if (collection) {
+          const isCodeValid = await checkAuthCode(authcode);
+          if (isCodeValid) {
             user = {
               id: randomUUID(),
               name: "authenticated-wedding-guest",

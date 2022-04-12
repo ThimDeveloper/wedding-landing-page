@@ -3,6 +3,7 @@ interface EyeIconProps {
   customStylesOpen?: string[];
   customStylesClosed?: string[];
 }
+
 export const EyeIcon: React.FC<EyeIconProps> = ({
   visible,
   customStylesOpen,

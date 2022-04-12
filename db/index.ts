@@ -16,3 +16,26 @@ export const getDbInstance = () => {
   _setInstance(client);
   return client;
 };
+
+export const checkAuthCode = async (authcode: string) => {
+  const client = await getDbInstance().connect();
+  const collection = client.db("wedding").collection("codes");
+  const result = await collection.findOne({ code: authcode });
+  await client.close();
+  return result;
+};
+
+interface ValidSpeechData {
+  firstName: string;
+  lastName: string;
+  relation: string;
+  email: string;
+  phone: string;
+}
+export const registerSpeech = async (speechData: ValidSpeechData) => {
+  const client = await getDbInstance().connect();
+  const collection = client.db("wedding").collection("replies");
+  const result = await collection.insertOne(speechData);
+  await client.close();
+  return result;
+};
