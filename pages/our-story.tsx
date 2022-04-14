@@ -13,7 +13,10 @@ const OurStory: NextPage = () => {
       <div className="p-2 min-h-screen w-11/12 mx-auto md:p-0 md:w-7/12 ">
         <Grid>
           <Grid.Col sm={12} md={6}>
-            <Blockquote cite="– Anne Swärd">
+            <Blockquote
+              cite="– Anne Swärd"
+              style={{ fontFamily: "Square Peg, cursive", fontSize: "2rem" }}
+            >
               Kärleken är en resa utan kompass i ett väglöst land. Ett äventyr.
             </Blockquote>
             <div className="m-2 rounded border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl -rotate-3">
