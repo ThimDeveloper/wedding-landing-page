@@ -2,7 +2,7 @@ import { Checkbox } from "@mantine/core";
 import { useRouter } from "next/router";
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { ThankYouMessage } from "./ThankYouMessage";
-
+import { LoadingOverlay } from "@mantine/core";
 interface FormValues {
   firstName: string;
   lastName: string;
@@ -27,6 +27,7 @@ export const RegisterSpeechForm: React.FC = () => {
   const [complete, setComplete] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const allFilled = Object.values(formValues).every((value) => !!value);
@@ -39,7 +40,7 @@ export const RegisterSpeechForm: React.FC = () => {
   };
   const onSubmitHandler = async (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-
+    setLoading(true);
     try {
       const response = await fetch("/api/toast", {
         method: "POST",
@@ -51,17 +52,20 @@ export const RegisterSpeechForm: React.FC = () => {
       if (response.ok) {
         setErrorMessage(null);
         setOpenModal(true);
+        setLoading(false);
       } else {
         setErrorMessage(
           "Dina svar har tyvärr inte blivit registrerade. Försök igen."
         );
         setOpenModal(true);
+        setLoading(false);
       }
     } catch (error) {
       setErrorMessage(
         "Dina svar har tyvärr inte blivit registrerade. Försök igen."
       );
       setOpenModal(true);
+      setLoading(false);
     }
   };
 
@@ -87,6 +91,12 @@ export const RegisterSpeechForm: React.FC = () => {
         open={openModal}
         errorMessage={errorMessage}
         setOpen={handleModalClose}
+      />
+      <LoadingOverlay
+        visible={loading}
+        zIndex={10}
+        style={{ position: "fixed" }}
+        loaderProps={{ size: "lg", color: "pink", variant: "bars" }}
       />
       <div className="min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
         <main className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-xl shadow-2xl">

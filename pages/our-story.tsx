@@ -3,7 +3,6 @@ import Image from "next/image";
 import kiss from "../public/images/kiss.jpeg";
 import midsummer from "../public/images/midsummer_bw.jpeg";
 import osterlen from "../public/images/osterlen_bw.jpeg";
-import bike from "../public/images/bike.jpeg";
 import new_year from "../public/images/new_year.jpeg";
 import { Blockquote, Grid } from "@mantine/core";
 import { getSession } from "next-auth/react";
