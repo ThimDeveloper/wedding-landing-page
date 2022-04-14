@@ -25,4 +25,4 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   };
 }
 
-export default Gifts;
+export default <Gifts />;
