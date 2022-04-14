@@ -4,18 +4,21 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, SyntheticEvent, useState } from "react";
 import { EyeIcon } from "@/components/EyeIcon";
+import { LoadingOverlay } from "@mantine/core";
 
 const SignIn: NextPage = () => {
   const router = useRouter();
   const [authcode, setAuthcode] = useState("");
   const [visible, setVisible] = useState(false);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onPassCodeChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
     setAuthcode(evt.target.value);
   };
   const onSubmitHandler = async (evt: SyntheticEvent) => {
     evt.preventDefault();
+    setLoading(true);
     const response = await signIn("credentials", {
       authcode: authcode,
       redirect: false,
@@ -23,6 +26,7 @@ const SignIn: NextPage = () => {
     });
     if ((response as any)?.error) {
       setError(true);
+      setLoading(false);
     } else {
       setError(false);
       await router.replace(router.asPath, "/our-story");
@@ -31,6 +35,11 @@ const SignIn: NextPage = () => {
 
   return (
     <div className="min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
+      <LoadingOverlay
+        visible={loading}
+        style={{ position: "fixed" }}
+        loaderProps={{ size: "lg", color: "pink", variant: "bars" }}
+      />
       <header className="max-w-lg mx-auto"></header>
       <main className="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-xl shadow-2xl">
         <section>

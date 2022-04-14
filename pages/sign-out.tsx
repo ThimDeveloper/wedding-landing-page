@@ -42,10 +42,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
   return {
     props: { session: null },
-    redirect: {
-      destination: "/",
-      permanent: false,
-    },
   };
 }
 
