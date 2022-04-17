@@ -8,14 +8,7 @@ export default function Document() {
   const baseStyling = `min-h-screen bg-gradient-to-r ${gradients[1]}`;
   return (
     <Html>
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Square+Peg&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
+      <Head />
       <body className={baseStyling}>
         <Main />
         <NextScript />

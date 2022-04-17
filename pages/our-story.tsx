@@ -14,8 +14,9 @@ const OurStory: NextPage = () => {
         <Grid>
           <Grid.Col sm={12} md={6}>
             <Blockquote
+              className="font-square-peg"
               cite="– Anne Swärd"
-              style={{ fontFamily: "Square Peg, cursive", fontSize: "2rem" }}
+              style={{ fontSize: "2rem" }}
             >
               Kärleken är en resa utan kompass i ett väglöst land. Ett äventyr.
             </Blockquote>
@@ -24,6 +25,7 @@ const OurStory: NextPage = () => {
                 src={midsummer}
                 alt="Midsommar"
                 layout="responsive"
+                placeholder="blur"
                 priority
               />
             </div>
@@ -32,16 +34,28 @@ const OurStory: NextPage = () => {
                 src={new_year}
                 alt="New Year"
                 layout="responsive"
+                placeholder="blur"
                 priority
               />
             </div>
           </Grid.Col>
           <Grid.Col sm={12} md={6}>
             <div className="m-2 rounded border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl rotate-2">
-              <Image src={kiss} alt="Kyss" layout="responsive" priority />
+              <Image
+                src={kiss}
+                alt="Kyss"
+                layout="responsive"
+                placeholder="blur"
+                priority
+              />
             </div>
             <div className="m-2 rounded border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl rotate-6">
-              <Image src={osterlen} alt="Midsommar" layout="responsive" />
+              <Image
+                src={osterlen}
+                alt="Midsommar"
+                layout="responsive"
+                placeholder="blur"
+              />
             </div>
           </Grid.Col>
         </Grid>

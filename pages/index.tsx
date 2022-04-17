@@ -5,7 +5,7 @@ const Home: NextPage = () => {
     <div className="min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0">
       <main className="bg-white max-w-4xl mx-auto p-8 md:p-12 my-10 rounded-xl shadow-2xl">
         <section className="pb-4">
-          <h1 className="text-5xl mb-4" style={{ fontFamily: "Square Peg" }}>
+          <h1 className="text-5xl mb-4 font-square-peg">
             Simon och Marie ska gifta sig!
           </h1>
           <section className="font-thin text-xl">
