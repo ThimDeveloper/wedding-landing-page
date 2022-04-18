@@ -1,6 +1,11 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-const uri = `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_CLUSTER}.iygo1.mongodb.net/replies?retryWrites=true&w=majority`;
+const URI = `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@${process.env.MONGO_DB_CLUSTER}.iygo1.mongodb.net/replies?retryWrites=true&w=majority`;
+const DATABASE = process.env.MONGO_DB_DATABASE;
+const Collections = {
+  Codes: "codes",
+  ToastReplies: "replies",
+};
 
 let _instance: null | MongoClient = null;
 
@@ -10,7 +15,7 @@ export const getDbInstance = () => {
   if (_instance) {
     return _instance;
   }
-  const client = new MongoClient(uri, {
+  const client = new MongoClient(URI, {
     serverApi: ServerApiVersion.v1,
   });
   _setInstance(client);
@@ -19,7 +24,7 @@ export const getDbInstance = () => {
 
 export const checkAuthCode = async (authcode: string) => {
   const client = await getDbInstance().connect();
-  const collection = client.db("wedding").collection("codes");
+  const collection = client.db(DATABASE).collection(Collections.Codes);
   const result = await collection.findOne({ code: authcode });
   await client.close();
   return result;
@@ -34,7 +39,7 @@ interface ValidSpeechData {
 }
 export const registerSpeech = async (speechData: ValidSpeechData) => {
   const client = await getDbInstance().connect();
-  const collection = client.db("wedding").collection("replies");
+  const collection = client.db(DATABASE).collection(Collections.ToastReplies);
   const result = await collection.insertOne(speechData);
   await client.close();
   return result;

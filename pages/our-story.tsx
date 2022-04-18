@@ -6,6 +6,7 @@ import osterlen from "../public/images/osterlen_bw.jpeg";
 import new_year from "../public/images/new_year.jpeg";
 import { Blockquote, Grid } from "@mantine/core";
 import { getSession } from "next-auth/react";
+import { motion } from "framer-motion";
 
 const OurStory: NextPage = () => {
   return (
@@ -14,35 +15,66 @@ const OurStory: NextPage = () => {
         <Grid>
           <Grid.Col sm={12} md={6}>
             <Blockquote
+              className="font-square-peg"
               cite="– Anne Swärd"
-              style={{ fontFamily: "Square Peg, cursive", fontSize: "2rem" }}
+              style={{ fontSize: "2rem" }}
             >
               Kärleken är en resa utan kompass i ett väglöst land. Ett äventyr.
             </Blockquote>
-            <div className="m-2 rounded border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl -rotate-3">
+            <motion.div
+              style={{ rotate: -3 }}
+              whileHover={{ scale: 1.1, rotate: -3 }}
+              className="m-2 rounded border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl"
+            >
               <Image
                 src={midsummer}
                 alt="Midsommar"
                 layout="responsive"
+                placeholder="blur"
                 priority
               />
-            </div>
-            <div className="m-2 rounded border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl -rotate-4">
+            </motion.div>
+            <motion.div
+              style={{ rotate: 4 }}
+              whileHover={{ scale: 1.1, rotate: 4 }}
+              className="m-2 rounded border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl"
+            >
               <Image
+                className="-z-10"
                 src={new_year}
                 alt="New Year"
                 layout="responsive"
+                placeholder="blur"
                 priority
               />
-            </div>
+            </motion.div>
           </Grid.Col>
           <Grid.Col sm={12} md={6}>
-            <div className="m-2 rounded border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl rotate-2">
-              <Image src={kiss} alt="Kyss" layout="responsive" priority />
-            </div>
-            <div className="m-2 rounded border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl rotate-6">
-              <Image src={osterlen} alt="Midsommar" layout="responsive" />
-            </div>
+            <motion.div
+              style={{ rotate: 2 }}
+              whileHover={{ scale: 1.1, rotate: 2 }}
+              className="m-2 rounded border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl"
+            >
+              <Image
+                src={kiss}
+                alt="Kyss"
+                layout="responsive"
+                placeholder="blur"
+                priority
+              />
+            </motion.div>
+            <motion.div
+              style={{ rotate: 6 }}
+              whileHover={{ scale: 1.1, rotate: 6 }}
+              className="m-2 rounded border-[8px] border-b-[64px] border-white shadow-lg md:shadow-xl"
+            >
+              <Image
+                src={osterlen}
+                alt="Midsommar"
+                layout="responsive"
+                placeholder="blur"
+              />
+            </motion.div>
           </Grid.Col>
         </Grid>
       </div>

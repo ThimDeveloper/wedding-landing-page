@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        lato: ["Lato", "sans-serif"],
+        "square-peg": ["Square Peg", "cursive"],
+      },
       colors: {
         transparent: "transparent",
         current: "currentColor",
