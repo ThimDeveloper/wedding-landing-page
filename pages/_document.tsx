@@ -6,7 +6,7 @@ const gradients = [
   "from-champagne via-pale-pink to-pale-pink",
 ];
 export default function Document() {
-  const baseStyling = `min-h-screen bg-gradient-to-br ${gradients[2]}`;
+  const baseStyling = `min-h-screen bg-gradient-to-br ${gradients[1]}`;
   return (
     <Html>
       <Head />
