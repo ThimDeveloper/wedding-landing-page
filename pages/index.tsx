@@ -20,8 +20,8 @@ const Home: NextPage = () => {
           <p>
             Vi har skapat den här webbplatsen som ett bekvämt och interaktivt
             sätt att dela alla viktiga detaljer med dig inför vårt bröllop. Du
-            kan bland annat läsa mer om vår kärlekshistoria, och anmäla intresse
-            om att hålla ett tal på bröllopet.
+            kan bland annat få mer information om bröllopshelgen, och anmäla
+            intresse om att hålla ett tal på bröllopet.
           </p>
           <div className="flex flex-col text-center mt-4">♡♡♡</div>
         </section>
