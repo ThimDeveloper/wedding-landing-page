@@ -2,11 +2,11 @@ import type { AppProps } from "next/app";
 import "../styles/globals.css";
 import { Layout } from "../components/Layout";
 import Head from "next/head";
-import { SessionProvider } from "next-auth/react";
+import { ModalProvider } from "@/components/ModalProvider";
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <SessionProvider session={session}>
+    <ModalProvider>
       <Layout>
         <Head>
           <title>Simon och Maries Bröllop</title>
@@ -32,7 +32,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         </Head>
         <Component {...pageProps} />
       </Layout>
-    </SessionProvider>
+    </ModalProvider>
   );
 }
 

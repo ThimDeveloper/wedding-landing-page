@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MouseEvent, useEffect, useMemo, useState } from "react";
+import { MouseEvent, useState } from "react";
 
 interface NavbarItemProps {
   href: string;
