@@ -82,21 +82,4 @@ const OurStory: NextPage = () => {
   );
 };
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const { req, res } = context;
-  const session = await getSession({ req });
-  if (!session && res) {
-    return {
-      props: { session: null },
-      redirect: {
-        destination: "/sign-in",
-        permanent: false,
-      },
-    };
-  }
-  return {
-    props: { session: session },
-  };
-}
-
 export default OurStory;

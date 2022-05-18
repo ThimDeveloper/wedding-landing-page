@@ -10,8 +10,8 @@ const Home: NextPage = () => {
           </h1>
           <section className="font-thin text-xl">
             <p>
-              Välkommen till vår bröllopswebbplats, vi kan inte vänta med att
-              fira vår speciella dag med dig.
+              Välkommen till vår bröllopswebbplats, vi ser fram emot att fira
+              vår speciella dag med dig.
             </p>
             <div className="flex flex-col text-center mt-4">♡♡♡</div>
           </section>
@@ -20,15 +20,15 @@ const Home: NextPage = () => {
           <p>
             Vi har skapat den här webbplatsen som ett bekvämt och interaktivt
             sätt att dela alla viktiga detaljer med dig inför vårt bröllop. Du
-            kan läsa mer om vår kärlekshistoria, och anmäla intresse om att
-            hålla ett tal på bröllopet.
+            kan bland annat få mer information om bröllopshelgen, och anmäla
+            intresse om att hålla ett tal på bröllopet.
           </p>
           <div className="flex flex-col text-center mt-4">♡♡♡</div>
         </section>
         <section className="font-thin text-xl">
           <p>
-            Vi är så glada över att dela denna dag med dig och ser fram emot att
-            dansa hela natten med alla våra favoritmänniskor!
+            Vi är så glada över att få dela denna dag med dig och ser fram emot
+            att dansa hela natten med alla våra favoritmänniskor!
           </p>
         </section>
       </main>
