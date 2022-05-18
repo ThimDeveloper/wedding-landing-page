@@ -36,12 +36,13 @@ export const Navbar = () => {
         activeTab={activeTab}
       />
           <NavbarItem
-            href="/gifts"
-            text="Gåvor"
-            onClick={close}
-            activeTab={activeTab}
-          />
+        href="/gifts"
+        text="Gåvor"
+        onClick={close}
+        activeTab={activeTab}
+      />
           */}
+
       <NavbarItem
         href="/toast"
         text="Anmäl ett tal"
