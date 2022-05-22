@@ -50,7 +50,7 @@ const TheWedding: NextPage = () => {
                 oss på{" "}
                 <a
                   className="text-base font-mono md:hover:text-pink-300"
-                  href="mailto:osa@simonmariebrollop.se?subject=OSA till Simon och Maries Bröllop 2022"
+                  href="mailto:osa@simonmariebrollop.se"
                 >
                   osa@simonmariebrollop.se
                 </a>
