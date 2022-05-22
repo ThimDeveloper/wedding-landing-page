@@ -1,21 +1,20 @@
 import { useState, useEffect } from "react";
 import { Modal } from "@mantine/core";
-
 const CONSTRUCTION_MODAL_SEEN_KEY = "CONSTRUCTION_MODAL_SEEN_KEY";
 
 export const ModalProvider: React.FC = ({ children }) => {
   const [opened, setOpened] = useState(true);
-  //   useEffect(() => {
-  //     console.log(localStorage);
-  //     const modalSeen = !!localStorage.getItem(CONSTRUCTION_MODAL_SEEN_KEY);
-  //     setOpened(!modalSeen);
-  //   }, []);
+  useEffect(() => {
+    console.log(localStorage);
+    const modalSeen = !!localStorage.getItem(CONSTRUCTION_MODAL_SEEN_KEY);
+    setOpened(!modalSeen);
+  }, []);
 
-  //   useEffect(() => {
-  //     if (!opened) {
-  //       localStorage.setItem(CONSTRUCTION_MODAL_SEEN_KEY, "true");
-  //     }
-  //   }, [opened]);
+  useEffect(() => {
+    if (!opened) {
+      localStorage.setItem(CONSTRUCTION_MODAL_SEEN_KEY, "true");
+    }
+  }, [opened]);
 
   return (
     <>
