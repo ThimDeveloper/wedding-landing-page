@@ -29,12 +29,13 @@ export const Navbar = () => {
         onClick={close}
         activeTab={activeTab}
       />
-      {/* <NavbarItem
+      <NavbarItem
         href="/the-wedding"
-        text="Information om bröllopet"
+        text="Information om bröllopshelgen"
         onClick={close}
         activeTab={activeTab}
       />
+      {/*
           <NavbarItem
         href="/gifts"
         text="Gåvor"
