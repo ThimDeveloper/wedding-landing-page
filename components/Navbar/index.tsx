@@ -29,12 +29,13 @@ export const Navbar = () => {
         onClick={close}
         activeTab={activeTab}
       />
-      {/* <NavbarItem
+      <NavbarItem
         href="/the-wedding"
-        text="Information om bröllopet"
+        text="Information om helgen"
         onClick={close}
         activeTab={activeTab}
       />
+      {/*
           <NavbarItem
         href="/gifts"
         text="Gåvor"
@@ -55,9 +56,9 @@ export const Navbar = () => {
   return (
     <>
       <nav className="fixed w-full lg:px-12 z-50 flex flex-wrap items-center p-3 bg-white shadow-lg">
-        <Link href="/">
+        <Link href="/" passHref>
           <a className="inline-flex items-center p-2 mr-4" onClick={close}>
-            <span className="text-3xl font-thin text-black tracking-wide">
+            <span className="text-3xl font-thin text-black tracking-wide md:hover:text-pink-300 transition duration-300">
               <h1>Simon x Marie</h1>
             </span>
           </a>
