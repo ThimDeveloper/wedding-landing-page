@@ -16,7 +16,7 @@ const Home: NextPage = () => {
             <div className="flex flex-col text-center mt-4">♡♡♡</div>
           </section>
         </section>
-        <section className="font-thin text-xl mb-8">
+        <section className="font-thin text-xl mb-4">
           <p>
             Vi har skapat den här webbplatsen som ett bekvämt och interaktivt
             sätt att dela alla viktiga detaljer med dig inför vårt bröllop. Du
