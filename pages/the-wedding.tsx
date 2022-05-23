@@ -82,11 +82,13 @@ const TheWedding: NextPage = () => {
             title="Mat och dryck"
             paragraphs={[
               <>
-                Vi kommer att ha tillgång till Herrgårdens alla faciliteter
-                under helgen vilket inkluderar biljardrum, tennisbanor, gym,
-                bastu & relax, bar, matsal och mycket mer. Ulvhäll ligger
-                beläget vid mälaren vilket öppnar upp för bad för de som är
-                sugna.
+                Vätska samt återhämtning är viktigt, därför kommer det vara
+                fribar under hela helgen. I den fria baren går det att hitta
+                både alkoholhaltiga drycker samt alkoholfria alternativ. För de
+                som anländer på fredagen kommer vi att bjuda på grillning för
+                att mätta våra magar. Det kommer efter vigseln att serveras
+                snittar för att vi alla ska hålla humöret på topp fram till
+                middagen på lördag.
               </>,
               <>
                 <ParagraphHeading text={"Frukost"} />
